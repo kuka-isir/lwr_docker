@@ -2,10 +2,10 @@
 set -e
 
 # setup environment
-source "$HOME/.bashrc"
+source $HOME/.bashrc
 
 # start in home directory 
 cd 
 
-exec "$@"
+exec bash -i -c $@
 
