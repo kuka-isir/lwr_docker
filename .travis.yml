@@ -1,0 +1,11 @@
+sudo: required
+services: 
+  - docker
+
+dist: trusty
+# Force travis to use its minimal image with default Python settings
+language: generic
+
+before_install:
+  - docker build -t kukaisir/lwr-minimal minimal/
+
