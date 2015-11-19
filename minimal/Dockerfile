@@ -6,12 +6,20 @@ RUN apt-get update && apt-get install -y \
     bash-completion \
     build-essential \
     git \
+    module-init-tools \
+    nautilus \
     python-rosinstall \
+    software-properties-common \
     tmux \
     vim \
-    wget \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+    wget
+
+# Install and configure Nvidia
+RUN apt-get install -y binutils mesa-utils
+RUN add-apt-repository ppa:xorg-edgers/ppa && apt-get update
+RUN apt-get install -y nvidia-352 nvidia-settings
+RUN ldconfig
+ENV QT_X11_NO_MITSHM 1
 
 # Now create the ros user itself
 RUN adduser --gecos "ROS User" --disabled-password ros
@@ -20,10 +28,11 @@ ADD 99_aptget /etc/sudoers.d/99_aptget
 RUN chmod 0440 /etc/sudoers.d/99_aptget && chown root:root /etc/sudoers.d/99_aptget
 
 # Choose to run as user
+ENV USER ros
 USER ros
 
 # Change HOME environment variable
-ENV HOME=/home/ros
+ENV HOME /home/ros
 
 # Installation script
 COPY lwr_setup /sbin/lwr_install
@@ -36,6 +45,9 @@ RUN sudo chmod +x /sbin/update_bashrc ; sudo chown ros /sbin/update_bashrc ; syn
 # Change entrypoint to source ~/.bashrc and start in ~
 COPY entrypoint.sh /ros_entrypoint.sh
 RUN sudo chmod +x /ros_entrypoint.sh ; sudo chown ros /ros_entrypoint.sh ; 
+
+# Clean image
+RUN sudo apt-get clean && sudo rm -rf /var/lib/apt/lists/*
 
 ENTRYPOINT ["/ros_entrypoint.sh"]
 CMD ["bash"]
