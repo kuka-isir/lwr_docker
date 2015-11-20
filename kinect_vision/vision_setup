@@ -1,0 +1,20 @@
+ROS_DISTRO="indigo"
+
+source /opt/ros/$ROS_DISTRO/setup.bash
+
+ROS_WS=~/ros_ws
+VISION_WS=$ROS_WS/vision_ws
+
+mkdir -p $VISION_WS/src
+
+cd $VISION_WS/src
+git clone https://github.com/kuka-isir/kinects_human_tracking.git
+
+cd $VISION_WS
+catkin init
+rosdep install -r --from-paths $VISION_WS/ --rosdistro $ROS_DISTRO -y
+
+cd $VISION_WS/src
+catkin build --limit-status-rate 0.1 --no-notify -j2 -DCATKIN_ENABLE_TESTING=OFF -DCMAKE_BUILD_TYPE=Debug
+source ../devel/setup.sh
+
