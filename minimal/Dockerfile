@@ -1,4 +1,4 @@
-FROM osrf/ros:indigo-desktop-full
+FROM ros:indigo-ros-base
 MAINTAINER Jimmy Da Silva jimmy.dasilva@isir.upmc.fr
 
 # Install additionnal useful packages

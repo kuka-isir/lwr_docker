@@ -36,6 +36,10 @@ sudo apt-get -y install gazebo6
 sudo apt-get -y install libgazebo6-dev
 sudo apt-get -y install ros-$ROS_DISTRO-gazebo6-*
 
+sudo apt-get install -y python-rosdep python-catkin-tools
+sudo apt-get install -y ros-$ROS_DISTRO-catkin ros-$ROS_DISTRO-ros
+sudo rosdep init
+rosdep update
 
 ROS_WS=~/ros_ws
 LWR_WS=$ROS_WS/lwr_ws
@@ -108,17 +112,11 @@ git clone https://github.com/kuka-isir/rtt_lwr_controllers
 cd $LWR_WS
 catkin init
 rosdep install -r --from-paths $LWR_WS/ --rosdistro $ROS_DISTRO -y
-
+catkin_make -j2 -DCATKIN_ENABLE_TESTING=OFF -DCMAKE_BUILD_TYPE=RelWithDebInfo
+source devel/setup.sh
 
 cd $LWR_CONTROLLERS_WS
 catkin init
 rosdep install -r --from-paths $LWR_CONTROLLERS_WS/ --rosdistro $ROS_DISTRO -y
-
-
-cd $LWR_WS/src
-catkin build --limit-status-rate 0.1 --no-notify -j2 -DCATKIN_ENABLE_TESTING=OFF -DCMAKE_BUILD_TYPE=Debug
-source ../devel/setup.sh
-
-cd $LWR_CONTROLLERS_WS/src
-catkin build --limit-status-rate 0.1 --no-notify -j2 -DCATKIN_ENABLE_TESTING=OFF -DCMAKE_BUILD_TYPE=Debug
-source ../devel/setup.sh
+catkin_make -j2 -DCATKIN_ENABLE_TESTING=OFF -DCMAKE_BUILD_TYPE=RelWithDebInfo
+source devel/setup.sh
