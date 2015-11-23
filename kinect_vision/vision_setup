@@ -2,6 +2,8 @@ ROS_DISTRO="indigo"
 
 source /opt/ros/$ROS_DISTRO/setup.bash
 
+sudo apt-get update && sudo apt-get install -y ros-$ROS_DISTRO-openni-* ros-$ROS_DISTRO-freenect-*
+
 ROS_WS=~/ros_ws
 VISION_WS=$ROS_WS/vision_ws
 
