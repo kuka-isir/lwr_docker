@@ -8,4 +8,5 @@ language: generic
 
 before_install:
   - docker build -t kukaisir/lwr-minimal minimal/
+  - docker build -t kukaisir/kinect-vision kinect_vision/
 
