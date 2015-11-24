@@ -2,7 +2,7 @@ FROM ros:indigo-ros-base
 MAINTAINER Jimmy Da Silva jimmy.dasilva@isir.upmc.fr
 
 # Install additionnal useful packages
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y -qq \
     bash-completion \
     build-essential \
     git \
@@ -15,9 +15,9 @@ RUN apt-get update && apt-get install -y \
     wget
 
 # Install and configure Nvidia
-RUN apt-get install -y binutils mesa-utils
+RUN apt-get install -y -qq binutils mesa-utils
 RUN add-apt-repository ppa:xorg-edgers/ppa && apt-get update
-RUN apt-get install -y nvidia-352 nvidia-settings
+RUN apt-get install -y -qq nvidia-352 nvidia-settings
 RUN ldconfig
 ENV QT_X11_NO_MITSHM 1
 
