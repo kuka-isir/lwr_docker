@@ -6,7 +6,7 @@ source /opt/ros/$ROS_DISTRO/setup.bash
 sudo apt-add-repository ppa:floe/libusb
 sudo apt-add-repository ppa:xorg-edgers
 sudo apt-add-repository ppa:graphics-drivers/ppa
-sudo apt-get update 
+sudo apt-get update -qq 
 
 ## Install libfreenect2
 cd ~
