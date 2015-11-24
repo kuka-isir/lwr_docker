@@ -1,0 +1,51 @@
+ROS_DISTRO="indigo"
+
+source /opt/ros/$ROS_DISTRO/setup.bash
+
+## Install new ppa for later installation purpose
+sudo apt-add-repository ppa:floe/libusb
+sudo apt-add-repository ppa:xorg-edgers
+sudo apt-add-repository ppa:graphics-drivers/ppa
+sudo apt-get update 
+
+## Install libfreenect2
+cd ~
+git clone https://github.com/OpenKinect/libfreenect2.git
+sudo apt-get install -y -qq build-essential cmake pkg-config libturbojpeg libjpeg-turbo8-dev mesa-common-dev freeglut3-dev libxrandr-dev libxi-dev
+sudo apt-get install -y -qq libusb-1.0-0-dev
+cd ~/libfreenect2/depends
+sh install_ubuntu.sh
+# sudo ln -s /usr/lib/x86_64-linux-gnu/libturbojpeg.so.0.0.0 /usr/lib/x86_64-linux-gnu/libturbojpeg.so
+sudo dpkg -i libglfw3*_3.0.4-1_*.deb
+sudo apt-get install -y -qq nvidia-modprobe ocl-icd-libopencl1 opencl-headers
+cd ~/libfreenect2
+mkdir build && cd build
+cmake .. -DENABLE_CXX11=ON
+make && sudo make install
+
+## Creating vision_ws
+ROS_WS=~/ros_ws
+VISION_WS=$ROS_WS/vision_ws
+mkdir -p $VISION_WS/src
+
+## Install kinect2_bridge
+sudo cp ~/libfreenect2/rules/90-kinect2.rules /etc/udev/rules.d/
+cd $VISION_WS/src
+git clone https://github.com/code-iai/iai_kinect2.git
+cd iai_kinect2
+rosdep install -r --from-paths .
+
+## Copying vision code
+cd $VISION_WS/src
+git clone https://github.com/kuka-isir/kinects_human_tracking.git
+git clone https://github.com/kuka-isir/depth_cam_tools.git
+git clone https://github.com/kuka-isir/depth_cam_extrinsics_calib.git
+sudo apt-get install -y -qq libbullet-dev
+git clone -b current-settings https://github.com/jimmydasilva/realtime_urdf_filter.git
+
+## Compiling vision code
+cd $VISION_WS
+catkin init
+rosdep install -r --from-paths $VISION_WS/ --rosdistro $ROS_DISTRO -y
+catkin_make -j2 -DCATKIN_ENABLE_TESTING=OFF -DCMAKE_BUILD_TYPE=RelWithDebInfo
+source devel/setup.sh
