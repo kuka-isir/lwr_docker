@@ -1,4 +1,4 @@
-FROM kukaisir/lwr_docker:lwr-minimal > /dev/null
+FROM kukaisir/lwr_docker:lwr-minimal
 MAINTAINER Jimmy Da Silva jimmy.dasilva@isir.upmc.fr
 
 # Installation script
