@@ -31,8 +31,8 @@ ENV HOME /home/ros
 ENV QT_X11_NO_MITSHM 1
 
 # Installation script
-COPY lwr_setup /sbin/lwr_install
-RUN sudo chmod +x /sbin/lwr_install ; sudo chown ros /sbin/lwr_install ; sync ; sudo -H -u ros bash -c /sbin/lwr_install ; sudo rm /sbin/lwr_install
+RUN sudo wget https://raw.githubusercontent.com/kuka-isir/lwr_setup/master/lwr_setup.bash
+RUN sudo chmod +x lwr_setup.bash ; sudo chown ros lwr_setup.bash ; sync ; sudo -H -u ros sh lwr_setup.bash ; sudo rm lwr_setup.bash
 
 # Change .bashrc
 COPY update_bashrc /sbin/update_bashrc

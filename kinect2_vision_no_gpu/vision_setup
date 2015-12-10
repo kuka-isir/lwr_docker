@@ -21,8 +21,7 @@ cmake .. -DENABLE_CXX11=ON
 make && sudo make install
 
 ## Creating vision_ws
-ROS_WS=~/ros_ws
-VISION_WS=$ROS_WS/vision_ws
+VISION_WS=~/vision_ws
 mkdir -p $VISION_WS/src
 
 ## Install kinect2_bridge

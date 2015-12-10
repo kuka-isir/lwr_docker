@@ -2,5 +2,4 @@
 echo "" >> ~/.bashrc
 echo "## ROS" >> ~/.bashrc
 echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
-echo "source ~/ros_ws/lwr_ws/devel/setup.bash" >> ~/.bashrc
-echo "source ~/ros_ws/lwr_controllers_ws/devel/setup.bash --extend" >> ~/.bashrc
+echo "source ~/lwr_ws/devel/setup.bash" >> ~/.bashrc

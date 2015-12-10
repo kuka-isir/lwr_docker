@@ -4,8 +4,7 @@ source /opt/ros/$ROS_DISTRO/setup.bash
 
 sudo apt-get update -qq && sudo apt-get install -y -qq ros-$ROS_DISTRO-openni-* ros-$ROS_DISTRO-freenect-* libbullet-dev
 
-ROS_WS=~/ros_ws
-VISION_WS=$ROS_WS/vision_ws
+VISION_WS=~/vision_ws
 
 mkdir -p $VISION_WS/src
 
