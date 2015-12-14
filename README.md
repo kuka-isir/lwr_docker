@@ -5,8 +5,8 @@ https://hub.docker.com/r/kukaisir/lwr_docker/
 
 ## With Nvidia GPU (nvidia-352)
 #### lwr-minimal [![Build Status](https://travis-ci.org/kuka-isir/lwr_docker.svg?branch=build_minimal)](https://travis-ci.org/kuka-isir/lwr_docker)
-#### kinect-vision [![Build Status](https://travis-ci.org/kuka-isir/lwr_docker.svg?branch=build_kinect_vison)](https://travis-ci.org/kuka-isir/lwr_docker)
-#### kinect2-vision [![Build Status](https://travis-ci.org/kuka-isir/lwr_docker.svg?branch=build_kinect2_vison)](https://travis-ci.org/kuka-isir/lwr_docker)
+#### kinect-vision [![Build Status](https://travis-ci.org/kuka-isir/lwr_docker.svg?branch=build_kinect_vision)](https://travis-ci.org/kuka-isir/lwr_docker)
+#### kinect2-vision [![Build Status](https://travis-ci.org/kuka-isir/lwr_docker.svg?branch=build_kinect2_vision)](https://travis-ci.org/kuka-isir/lwr_docker)
 
 ## With Intel GPU
 #### lwr-minimal-no-gpu [![Build Status](https://travis-ci.org/kuka-isir/lwr_docker.svg?branch=build_minimal_no_gpu)](https://travis-ci.org/kuka-isir/lwr_docker)
