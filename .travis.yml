@@ -7,10 +7,4 @@ dist: trusty
 language: generic
 
 before_install:
-  - docker build -t kukaisir/lwr-minimal minimal/
-  - docker build -t kukaisir/lwr-minimal-no-gpu minimal_no_gpu/
   - docker build -t kukaisir/kinect-vision kinect_vision/
-  - docker build -t kukaisir/kinect-vision-no-gpu kinect_vision_no_gpu/
-  - docker build -t kukaisir/kinect2-vision kinect2_vision/
-  - docker build -t kukaisir/kinect2-vision-no-gpu kinect2_vision_no_gpu/
-
