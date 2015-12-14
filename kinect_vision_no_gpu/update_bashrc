@@ -1,2 +1,0 @@
-# Adding all the necessary ros sourcing
-echo "source ~/vision_ws/devel/setup.bash" >> ~/.bashrc
