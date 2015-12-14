@@ -14,15 +14,15 @@ https://hub.docker.com/r/kukaisir/lwr_docker/
 #### kinect2-vision-no-gpu [![Build Status](https://travis-ci.org/kuka-isir/lwr_docker.svg?branch=build_kinect2_vision_no_gpu)](https://travis-ci.org/kuka-isir/lwr_docker)
 
 ## What is this ?
-The lwr-minimal (lwr-minimal-no-gpu) tag contains all the current development for the KUKA LWR4+ made in our lab
+The build_minimal (build_minimal_no_gpu) branch contains all the current development for the KUKA LWR4+ made in our lab
 
-The kinect-vision (kinect-vision-no-gpu) extends the lwr-minimal tag. It contains also all the perception code developped for our applications using the LWR4+
+The build_kinect_vision (build_kinect_vision_no_gpu) branch extends the build_minimal branch. It contains also all the perception code developped for our applications using the LWR4+
 
-The kinect2-vision (kinect2-vision-no-gpu) also installs libfreenect2 to be able to use the Microsoft KinectV2
+The build_kinect2_vision (build_kinect2_vision_no_gpu) also installs libfreenect2 to be able to use the Microsoft KinectV2
 
 ## How to use the docker images ?
 First make sure you installed docker properly, and created a docker group with sudo permissions. If not follow this tutorial: https://docs.docker.com/engine/installation/ubuntulinux/
 
-Choose which docker tag you need, go to its specific folder, and simply do: `./run.sh`
+Choose which branch you need, go to its specific folder, and simply do: `./run.sh`
 
 You can make some changes to the `Dockerfile` if you want. Then you just have to launch `./build.sh` to try build your new container
