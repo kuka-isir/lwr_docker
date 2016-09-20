@@ -1,6 +1,8 @@
 # lwr_docker
 Docker images for the applications developed for the Kuka LWR4+
 
+[![](https://images.microbadger.com/badges/image/kukaisir/lwr_docker.svg)](https://microbadger.com/images/kukaisir/lwr_docker "Get your own image badge on microbadger.com")
+
 https://hub.docker.com/r/kukaisir/lwr_docker/
 
 ## With Nvidia GPU (nvidia-352)
